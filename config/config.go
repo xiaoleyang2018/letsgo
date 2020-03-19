@@ -27,8 +27,8 @@ var (
 	defaultDBHost        = ""
 	defaultDBPort        = 3306
 	defaultDBUser        = "root"
-	defaultDBPassword    = "mysql.password"
-	defaultDBName        = "app"
+	defaultDBPassword    = "123456"
+	defaultDBName        = "users"
 	defaultDBTablePrefix = ""
 	defaultDBLogPath     = "/var/log/app-xorm.log"
 )

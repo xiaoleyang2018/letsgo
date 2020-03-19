@@ -1,10 +1,13 @@
 package router
 
 import (
+	"github.com/go-playground/validator"
+	"github.com/qinhao/letsgo/logices"
 	"os"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
+	//"github.com/go-playground/validator"
 )
 
 // Init initialize the route
@@ -32,6 +35,14 @@ func Init(logPath string, mode string) (*echo.Echo, error) {
 	e.GET("/hello", func(c echo.Context) error {
 		return c.String(200, "Hello World")
 	})
+	e.Validator = &CustomValidator{validator: validator.New()}
+	e.POST("/users",logices.Users )
 
 	return e, nil
+}
+type CustomValidator struct {
+	validator *validator.Validate
+}
+func (cv *CustomValidator) Validate(i interface{}) error {
+	return cv.validator.Struct(i)
 }

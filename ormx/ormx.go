@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go-xorm/core"
+	"xorm.io/core"
 	"github.com/go-xorm/xorm"
 )
 
@@ -34,11 +34,14 @@ func Init(db DB, runMode string) (*xorm.Engine, error) {
 
 	url := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8", db.User, db.Password, db.Host, db.Port, db.Name)
 
+	println(url)
 	var err error
 	orm, err = xorm.NewEngine(db.Type, url)
 	if err != nil {
 		return nil, fmt.Errorf("init database error: %v", err)
 	}
+
+	println(orm)
 
 	orm.SetLogLevel(core.LOG_DEBUG)
 	orm.ShowSQL(true)
