@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"os"
 
-	"xorm.io/core"
 	"github.com/go-xorm/xorm"
+	"xorm.io/core"
 )
 
 var orm *xorm.Engine

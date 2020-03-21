@@ -1,8 +1,8 @@
 package models
 
 type User struct {
-	ID int `json:"id" xorm:"id"`
-	Name string `json:"name" xorm:"name"`
+	ID    int    `json:"id" xorm:"id"`
+	Name  string `json:"name" xorm:"name"`
 	Email string `json:"email" xorm:"email"`
 }
 
@@ -26,8 +26,17 @@ func GetUser() *User {
 
 }
 
-
-func SaveUser(user *User) (int, error){
+func SaveUser(user *User) (int, error) {
 	_, err := orm.InsertOne(user)
 	return user.ID, err
+}
+func IsExist(user *User) (bool, error) {
+	has, err := orm.Exist(user)
+	if err != nil {
+		return false, err
+	}
+	if has {
+		return true, err
+	}
+	return false, err
 }

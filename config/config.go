@@ -28,7 +28,7 @@ var (
 	defaultDBPort        = 3306
 	defaultDBUser        = "root"
 	defaultDBPassword    = "123456"
-	defaultDBName        = "users"
+	defaultDBName        = "LetsGo"
 	defaultDBTablePrefix = ""
 	defaultDBLogPath     = "/var/log/app-xorm.log"
 )

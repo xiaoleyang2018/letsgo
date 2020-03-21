@@ -17,4 +17,3 @@ func Init(db ormx.DB, runMode string) error {
 	}
 	return nil
 }
-

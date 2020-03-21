@@ -36,13 +36,15 @@ func Init(logPath string, mode string) (*echo.Echo, error) {
 		return c.String(200, "Hello World")
 	})
 	e.Validator = &CustomValidator{validator: validator.New()}
-	e.POST("/users",logices.Users )
+	e.POST("/users", logices.Users)
 
 	return e, nil
 }
+
 type CustomValidator struct {
 	validator *validator.Validate
 }
+
 func (cv *CustomValidator) Validate(i interface{}) error {
 	return cv.validator.Struct(i)
 }
